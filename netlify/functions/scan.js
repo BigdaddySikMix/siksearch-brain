@@ -37,7 +37,7 @@ exports.handler = async function(event) {
             },
             {
               type: 'text',
-              text: 'Look at this photo of CD spines on a shelf. List every CD you can read. Return ONLY a JSON array like this: [{"artist":"Artist Name","album":"Album Title"}]. If you cannot read a spine clearly, skip it. No explanation, just the JSON array.'
+              text: 'Look at this photo of CD spines on a shelf. Read every CD spine you can see, working from left to right (or top to bottom if stacked). Return them IN ORDER as they appear in the photo. For every spine you attempt, include it in the JSON array. Format: [{"artist":"Artist Name","album":"Album Title","confidence":"high"}]. Use confidence "high" if you can clearly read both artist and album, "low" if you can only partially read or are guessing. Include ALL attempts in order. No explanation, just the JSON array.'
             }
           ]
         }]
