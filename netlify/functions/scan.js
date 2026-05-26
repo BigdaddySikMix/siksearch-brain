@@ -45,6 +45,7 @@ exports.handler = async function(event) {
     });
 
     const data = await response.json();
+   console.log('Claude response:', JSON.stringify(data));
     const text = data.content[0].text.trim();
     const cds = JSON.parse(text);
 
