@@ -16,8 +16,8 @@ exports.handler = async function(event) {
   }
 
   try {
-    const { image, mimeType } = JSON.parse(event.body);
-
+    const { image: rawImage, mimeType } = JSON.parse(event.body);
+    const image = rawImage.includes(',') ? rawImage.split(',')[1] : rawImage;
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
