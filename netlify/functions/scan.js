@@ -4,7 +4,7 @@ exports.handler = async function(event) {
   }
 
   try {
-    const { image } = JSON.parse(event.body);
+    const { image, mimeType } = JSON.parse(event.body);
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -21,7 +21,7 @@ exports.handler = async function(event) {
           content: [
             {
               type: 'image',
-              source: { type: 'base64', media_type: 'image/jpeg', data: image }
+              source: { type: 'base64', media_type: mimeType || 'image/jpeg', data: image }
             },
             {
               type: 'text',
